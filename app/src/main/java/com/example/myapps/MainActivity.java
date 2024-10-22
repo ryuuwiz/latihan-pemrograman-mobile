@@ -1,5 +1,6 @@
 package com.example.myapps;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -59,7 +60,16 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!isEmptyfields)
         {
-            textHasil.setText("NIM : " +nim+" Nama : "+nama+" Prodi : "+prodi);
+            textHasil.setText("NIM : " +nim+"\n Nama : "+nama+"\n Prodi : "+prodi);
         }
+        if (!isEmptyfields)
+        {
+            Intent move_intent = new Intent(MainActivity.this, DetailActivity.class);
+            move_intent.putExtra(DetailActivity.EXTRA_NIM, nim);
+            move_intent.putExtra(DetailActivity.EXTRA_NAMA, nama);
+            move_intent.putExtra(DetailActivity.EXTRA_PRODI, prodi);
+            startActivity(move_intent);
+        }
+
     }
 }
